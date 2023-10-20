@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pedido</h1>
+    <p>Hamburguer: <span id="hamburguer"></span></p>
+    <p>Acompanhamento: <span id="acompanhamento"></span></p>
+    <p>Bebida: <span id="bebida"></span></p>
+    <p>Total: <span id="total"></span></p>
+
+    <script>
+        const hamburguer = { BurguerX1: 1.36, BurguerX2: 2.31, BurguerX3: 2.81, BurguerX4: 3.21 };
+        const acompanhamento = { Nuggets: 3.69, Fritas: 1.58 };
+        const bebida = { Coca_Cola: 1.48, Fanta: 2.58, Água: 0.98 };
+
+        // Captura o pedido do hamburguer
+        let pedidoHamburguer = prompt("Olá! Seja bem-vindo! Qual é o número do hamburguer que você deseja?\n(1) - BurguerX1: 1.36\n(2) - BurguerX2: 2.31\n(3) - BurguerX3: 2.81\n(4) - BurguerX4: 3.21");
+
+        // Captura o pedido do acompanhamento
+        let pedidoAcompanhamento = prompt("Ótimo! Agora, escolha o acompanhamento:\n(1) - Nuggets: 3.69\n(2) - Fritas: 1.58");
+
+        // Captura o pedido da bebida
+        let pedidoBebida = prompt("Perfeito! Por fim, escolha a bebida:\n(1) - Coca-Cola: 1.48\n(2) - Fanta: 2.58\n(3) - Água: 0.98");
+
+        // Calcula o total do pedido
+        let total = hamburguer[`BurguerX${pedidoHamburguer}`] + acompanhamento[Object.keys(acompanhamento)[pedidoAcompanhamento - 1]] + bebida[Object.keys(bebida)[pedidoBebida - 1]];
+
+        // Exibe o pedido e o total na página
+        document.getElementById('hamburguer').innerText = `BurguerX${pedidoHamburguer}`;
+        document.getElementById('acompanhamento').innerText = Object.keys(acompanhamento)[pedidoAcompanhamento - 1];
+        document.getElementById('bebida').innerText = Object.keys(bebida)[pedidoBebida - 1];
+        document.getElementById('total').innerText = total.toFixed(2);
+    </script>
+</body>
+</html>
